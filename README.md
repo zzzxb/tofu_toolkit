@@ -1,3 +1,3 @@
-# tofu toolkit
+# Tofu Cat Toolkit
 
 `use jdk17+`
