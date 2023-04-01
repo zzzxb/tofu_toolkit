@@ -1,7 +1,7 @@
 package cn.tofucat.toolkit.llc.matcher;
 
 import cn.tofucat.toolkit.common.load.LoadClassAbstract;
-import cn.tofucat.toolkit.llc.annotation.Register;
+import cn.tofucat.toolkit.common.annotation.Register;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;

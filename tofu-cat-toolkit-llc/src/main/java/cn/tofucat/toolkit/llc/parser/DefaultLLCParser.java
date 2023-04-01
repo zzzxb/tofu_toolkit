@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
  * 2023/3/31
  */
 public class DefaultLLCParser extends LLCParserAbstract {
+    public final static DefaultLLCParser INSTANCE = new DefaultLLCParser();
 
     @Override
     public LLCNode parser(String llc) {

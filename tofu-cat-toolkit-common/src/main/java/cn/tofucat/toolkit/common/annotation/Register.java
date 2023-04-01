@@ -1,4 +1,4 @@
-package cn.tofucat.toolkit.llc.annotation;
+package cn.tofucat.toolkit.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

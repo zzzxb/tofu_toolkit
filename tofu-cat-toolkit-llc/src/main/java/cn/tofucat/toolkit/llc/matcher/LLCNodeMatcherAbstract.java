@@ -5,8 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class LLCNodeMatcherAbstract implements LLCNodeMatcher {
     private final static ConcurrentHashMap<String, LLCNodeMatcher> REGISTER = new ConcurrentHashMap<>();
 
-    public LLCNodeMatcherAbstract() {
-        MatcherLoad.INSTANCE.load("cn.tofucat.toolkit.llc.matcher");
+    static {
+        MatcherLoad.INSTANCE.load("cn.tofucat.toolkit.llc.handler");
     }
 
     protected LLCNodeMatcher pattern(String key) {
