@@ -1,19 +1,28 @@
-package cn.tofucat.toolkit.llc.load;
+package cn.tofucat.toolkit.llc.matcher;
 
+import cn.tofucat.toolkit.common.load.LoadClassAbstract;
 import cn.tofucat.toolkit.llc.annotation.Register;
-import cn.tofucat.toolkit.llc.matcher.LLCNodeMatcher;
-import cn.tofucat.toolkit.llc.matcher.LLCNodeMatcherAbstract;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
 
+@Slf4j
 public class MatcherLoad extends LoadClassAbstract {
+    public final static MatcherLoad INSTANCE = new MatcherLoad();
 
-    public MatcherLoad() {
-        load("cn.tofucat.toolkit.llc.matcher");
+    private MatcherLoad() {}
+
+    @Override
+    public void load(String pkg) {
+        try {
+            super.load(pkg);
+        }catch (RuntimeException e) {
+            log.warn(e.getMessage());
+        }
     }
 
     @Override
-    public Object loadClass(String classPath){
+    protected Object loadClass(String classPath){
         try {
             Class<?> clazz = Class.forName(classPath);
             Register annotation = clazz.getAnnotation(Register.class);

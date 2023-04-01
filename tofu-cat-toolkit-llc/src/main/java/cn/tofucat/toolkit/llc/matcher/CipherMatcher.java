@@ -11,11 +11,8 @@ public class CipherMatcher implements LLCNodeMatcher {
         CipherUtils.Encrypt encrypt;
         switch (node.getKey()) {
             case "SHA1": return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.SHA1);
-            case "sha1": return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.SHA1).toLowerCase();
             case "SHA256": return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.SHA256);
-            case "sha256": return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.SHA256).toLowerCase();
-            case "MD5": return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.MD5);
-            default: return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.MD5).toLowerCase();
+            default: return CipherUtils.encrypt(node.getValue(), CipherUtils.Encrypt.MD5);
         }
     }
 }

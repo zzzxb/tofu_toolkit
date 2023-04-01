@@ -46,7 +46,7 @@ public class DefaultLLCParser extends LLCParserAbstract {
         if (matcher.find()) {
             String group = matcher.group();
             String[] parts = group.split("\\[", 2);
-            String key = parts[0].trim().toUpperCase();
+            String key = parts[0].trim();
             String value = parts[1].substring(0, parts[1].length() - 1).trim();
             return new LLCNode(key, value, matcherHeart(matcherSkins(value)));
         }

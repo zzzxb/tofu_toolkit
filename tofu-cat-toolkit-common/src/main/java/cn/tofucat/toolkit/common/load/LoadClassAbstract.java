@@ -1,14 +1,23 @@
-package cn.tofucat.toolkit.llc.load;
+package cn.tofucat.toolkit.common.load;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentSkipListSet;
 
+@Slf4j
 public abstract class LoadClassAbstract {
+    private final static ConcurrentSkipListSet<String> PACKAGE_RECORD = new ConcurrentSkipListSet<>();
 
-    protected void load(String pkg) {
+    public void load(String pkg) {
+        if (PACKAGE_RECORD.contains(pkg)) {
+            throw new RuntimeException("Reloading Package: " + pkg);
+        }
         loadClassList(scanPackage(pkg));
+        PACKAGE_RECORD.add(pkg);
     }
 
     /**
