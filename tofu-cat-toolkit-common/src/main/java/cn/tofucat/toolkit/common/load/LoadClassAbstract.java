@@ -48,13 +48,21 @@ public abstract class LoadClassAbstract {
      */
     protected abstract Object loadClass(String classPath);
 
+    /**
+     *
+     * @param pkg cn.tofucat.toolkit.llc.handler
+     * @param resourcePath Resource absolute path, For example: /opt/app/llc/target/classes/cn/tofucat/toolkit/llc/handler
+     * @param files /opt/app/llc/target/classes/cn/tofucat/toolkit/llc/handler/abc.class
+     * @return   cn.tofucat.toolkit.llc.handler.abc
+     */
     private List<String> formatFilePath(String pkg, String resourcePath, List<File> files) {
         List<String> classPathList = new LinkedList<>();
         for (File file : files) {
             String classPath = file.getPath()
-                    .substring(resourcePath.length())
-                    .replace(File.separator, ".");
-            classPathList.add(pkg + "." + classPath.replace(".class", ""));
+                    .replace(resourcePath, "")
+                    .replace(File.separator, ".")
+                    .replace(".class", "");
+            classPathList.add(pkg + classPath);
         }
         return classPathList;
     }
