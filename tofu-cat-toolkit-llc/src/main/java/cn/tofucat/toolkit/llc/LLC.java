@@ -11,6 +11,8 @@ import cn.tofucat.toolkit.llc.parser.LLCParser;
  * 2023/3/31
  */
 public class LLC {
+
+    public static final LLC DEFAULT = new LLC();
     private final LLCParser parser;
     private final LLCNodeMatcher matcher;
 

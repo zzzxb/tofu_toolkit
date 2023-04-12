@@ -26,8 +26,9 @@ public abstract class LoadClassAbstract {
      */
     protected List<String> scanPackage(String pkg) {
         String resourcePath = resourcePath(pkg);
+        String absoluteResourcePath = new File(resourcePath).getAbsolutePath();
         List<File> files = scanFile(new File(resourcePath));
-        return formatFilePath(pkg, resourcePath, files);
+        return formatFilePath(pkg, absoluteResourcePath, files);
     }
 
     protected List<Object> loadClassList(List<String> classPathList) {

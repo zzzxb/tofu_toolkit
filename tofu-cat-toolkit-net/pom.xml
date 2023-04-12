@@ -12,8 +12,8 @@
     <artifactId>tofu-cat-toolkit-net</artifactId>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -21,6 +21,11 @@
         <dependency>
             <groupId>cn.tofucat</groupId>
             <artifactId>tofu-cat-toolkit-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.tofucat</groupId>
+            <artifactId>tofu-cat-toolkit-llc</artifactId>
         </dependency>
     </dependencies>
 

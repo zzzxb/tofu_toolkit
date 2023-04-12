@@ -11,7 +11,7 @@
     <modules>
         <module>tofu-cat-toolkit-common</module>
         <module>tofu-cat-toolkit-auth</module>
-        <module>tofu-cat-toolkit-api</module>
+        <module>tofu-cat-toolkit-webapi</module>
         <module>tofu-cat-toolkit-llc</module>
         <module>tofu-cat-toolkit-net</module>
     </modules>
@@ -23,7 +23,7 @@
 
         <spring-boot.version>2.7.10</spring-boot.version>
 
-        <tofucat-common.version>1.0-SNAPSHOT</tofucat-common.version>
+        <tofucat-toolkit.version>1.0-SNAPSHOT</tofucat-toolkit.version>
 
         <junit-jupiter.version>5.9.0</junit-jupiter.version>
         <lombok.version>1.18.26</lombok.version>
@@ -34,15 +34,46 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>cn.tofucat</groupId>
+                <artifactId>tofu-cat-toolkit-common</artifactId>
+                <version>${tofucat-toolkit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tofucat</groupId>
+                <artifactId>tofu-cat-toolkit-auth</artifactId>
+                <version>${tofucat-toolkit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tofucat</groupId>
+                <artifactId>tofu-cat-toolkit-llc</artifactId>
+                <version>${tofucat-toolkit.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
 
             <dependency>
-                <groupId>cn.tofucat</groupId>
-                <artifactId>tofu-cat-toolkit-common</artifactId>
-                <version>${tofucat-common.version}</version>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
 
             <dependency>
@@ -56,6 +87,22 @@
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slfj.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -74,22 +121,18 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slfj.version}</version>
         </dependency>
     </dependencies>
 

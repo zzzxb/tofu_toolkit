@@ -1,0 +1,13 @@
+server:
+  port: 23331
+
+spring:
+  application:
+    name: TOOLKIT-API
+  main:
+    banner-mode: off
+
+jwt:
+  key:
+    private: classpath:privateKey.pem
+    public: classpath:publicKey.pem

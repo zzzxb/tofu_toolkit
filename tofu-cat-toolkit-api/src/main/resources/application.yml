@@ -1,8 +1,0 @@
-server:
-  port: 23331
-
-spring:
-  application:
-    name: TOOLKIT-API
-  main:
-    banner-mode: off
