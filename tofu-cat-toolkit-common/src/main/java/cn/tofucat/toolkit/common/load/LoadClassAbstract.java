@@ -8,10 +8,17 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+/**
+ * 动态加载类
+ */
 @Slf4j
 public abstract class LoadClassAbstract {
     private final static ConcurrentSkipListSet<String> PACKAGE_RECORD = new ConcurrentSkipListSet<>();
 
+    /**
+     * 扫描包下所有文件, 并加载类
+     * @param pkg 示例： "cn.tofucat.toolkit.llc.matcher"
+     */
     public void load(String pkg) {
         if (PACKAGE_RECORD.contains(pkg)) {
             throw new RuntimeException("Reloading Package: " + pkg);
@@ -31,6 +38,11 @@ public abstract class LoadClassAbstract {
         return formatFilePath(pkg, absoluteResourcePath, files);
     }
 
+    /**
+     * 加载类
+     * @param classPathList 类路径列表
+     * @return 对应类的实例
+     */
     protected List<Object> loadClassList(List<String> classPathList) {
         List<Object> objectList = new LinkedList<>();
         for (String classPath : classPathList) {

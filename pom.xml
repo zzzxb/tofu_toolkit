@@ -14,6 +14,9 @@
         <module>tofu-cat-toolkit-webapi</module>
         <module>tofu-cat-toolkit-llc</module>
         <module>tofu-cat-toolkit-net</module>
+        <module>tofu-cat-toolkit-db</module>
+        <module>tofu-cat-toolkit-net/net-cmpp</module>
+        <module>tofu-cat-toolkit-net/net-http</module>
     </modules>
 
     <properties>

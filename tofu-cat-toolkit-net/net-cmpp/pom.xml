@@ -7,9 +7,10 @@
         <groupId>cn.tofucat</groupId>
         <artifactId>tofu-cat-toolkit</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>tofu-cat-toolkit-auth</artifactId>
+    <artifactId>net-cmpp</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,21 +18,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.tofucat</groupId>
-            <artifactId>tofu-cat-toolkit-common</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 </project>

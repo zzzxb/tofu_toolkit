@@ -14,6 +14,7 @@ public class MatcherLoad extends LoadClassAbstract {
 
     @Override
     public void load(String pkg) {
+        log.info("scan package: {}", pkg);
         try {
             super.load(pkg);
         }catch (RuntimeException e) {
@@ -21,6 +22,13 @@ public class MatcherLoad extends LoadClassAbstract {
         }
     }
 
+    /**
+     * 加载对应类，被注解的类
+     * @param classPath cn.tofucat.toolkit.llc.matcher.abc.class
+     * @return 返回对应类的实例
+     *
+     * @see Register
+     */
     @Override
     protected Object loadClass(String classPath){
         try {
@@ -35,8 +43,10 @@ public class MatcherLoad extends LoadClassAbstract {
             }
         } catch (ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException |
                  NoSuchMethodException e) {
+            log.error("load class error: {}", classPath, e);
             throw new RuntimeException(e);
         }
+        log.info("load class: {}", classPath);
         return null;
     }
 }
