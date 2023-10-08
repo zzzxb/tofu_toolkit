@@ -2,14 +2,15 @@ package cn.tofucat.toolkit.util;
 
 /**
  * zzzxb
- * 2023/10/8
+ * 2023/8/10
  */
 public class StringUtils {
-    public static boolean isBlack(String str) {
-        return null == str || str.trim().isEmpty();
+
+    public static boolean isBlank(String str) {
+        return str == null || str.trim().isEmpty();
     }
 
-    public static boolean isNotBlack(String str) {
-        return !isBlack(str);
+    public static boolean isNotBlank(String str) {
+        return !isBlank(str);
     }
 }
