@@ -1,8 +1,8 @@
 package cn.tofucat.toolkit.compression;
 
 
-import cn.tofucat.toolkit.util.ArgumentCheck;
-import cn.tofucat.toolkit.util.FileCheck;
+import cn.tofucat.toolkit.util.CheckParamUtils;
+import cn.tofucat.toolkit.util.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,8 +38,8 @@ public class Zip implements CompressionFile {
      * @param serial 是否按顺序生成文件名
      */
     public CompressFileInfo compress(Collection<String> filepathList, String outPath, boolean serial, int custom) {
-        ArgumentCheck.collectionIsEmpty(filepathList, "filepath is empty");
-        FileCheck.exists(filepathList);
+        CheckParamUtils.collectionIsEmpty(filepathList).throwMessage("filepath is empty");
+        FileUtils.exists(filepathList);
 
         final HashSet<String> filepathSet = new HashSet<>(filepathList);
         final LinkedList<String> fileNameList = new LinkedList<>();
@@ -84,7 +84,7 @@ public class Zip implements CompressionFile {
     }
 
     public CompressFileInfo compressFile(Collection<FileInfo> fileInfos, String outPath, boolean serial, int custom) {
-        ArgumentCheck.collectionIsEmpty(fileInfos, "filepath is empty");
+        CheckParamUtils.collectionIsEmpty(fileInfos).throwMessage("filepath is empty");
 
         final LinkedList<String> fileNameList = new LinkedList<>();
         try(ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(Paths.get(outPath)))) {

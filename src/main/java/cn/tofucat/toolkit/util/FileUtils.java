@@ -8,13 +8,11 @@ import java.util.Collection;
  * zzzxb
  * 2023/8/10
  */
-public class FileCheck {
+public final class FileUtils {
 
     public static boolean exists(Collection<String> filepath) {
         for (String path : filepath) {
-            if (!exists(path)) {
-                throw new IllegalArgumentException("file not exists");
-            }
+            CheckParamUtils.isFalse(exists(path)).throwMessage("file not exists");
         }
         return true;
     }

@@ -7,10 +7,17 @@ import java.util.Date;
  * zzzxb
  * 2023/8/25
  */
-public class DateUtils {
+public final class DateUtils {
 
-    public static String currentDate(String pattern) {
+    public static String formatNowDate(String pattern) {
+        return formatDate(pattern, new Date());
+    }
+
+    public static String formatDate(String pattern, Date date) {
+        CheckParamUtils.isBlack(pattern).throwMessage("pattern is null");
+        CheckParamUtils.isNull(date).throwMessage("date is null");
+
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-        return sdf.format(new Date());
+        return sdf.format(date);
     }
 }

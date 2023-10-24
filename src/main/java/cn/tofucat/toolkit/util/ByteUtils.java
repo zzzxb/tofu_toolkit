@@ -4,7 +4,7 @@ package cn.tofucat.toolkit.util;
  * zzzxb
  * 2023/8/25
  */
-public class ByteUtils {
+public final class ByteUtils {
     public static byte[] translationASCII(String str) {
         byte[] bytes = new byte[str.length()];
         for (int i = 0; i < str.length(); i++) {

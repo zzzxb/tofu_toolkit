@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
  * zzzxb
  * 2023/5/5
  */
-public class RemoteAddr {
+public final class RemoteAddr {
 
     /**
      * 获取客户端IP地址
