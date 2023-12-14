@@ -28,14 +28,14 @@ public class RSA {
         return INSTANCE;
     }
 
-    public KeyPair generatorKey() throws NoSuchAlgorithmException {
+    public KeyPair generatorKey(int len) throws NoSuchAlgorithmException {
         KeyPairGenerator generator = KeyPairGenerator.getInstance(ALGORITHM);
-        generator.initialize(KEY_SIZE);
+        generator.initialize(len < 1024 ? KEY_SIZE : len);
         return generator.generateKeyPair();
     }
 
-    public void writeKey(String outPath) throws NoSuchAlgorithmException {
-        KeyPair keyPair = generatorKey();
+    public void writeKey(int len, String outPath) throws NoSuchAlgorithmException {
+        KeyPair keyPair = generatorKey(len);
 
         PublicKey pubKey = keyPair.getPublic();
         FileUtils.write(Base64.getEncoder().encodeToString(pubKey.getEncoded()).getBytes(StandardCharsets.UTF_8), outPath + File.separator + "pub.key");
@@ -59,14 +59,11 @@ public class RSA {
         }
     }
 
-    public String encode(String publicKeyPath, String content) {
-        return encode(RSA.getInstance().readKey(publicKeyPath, RSA.Key.PublicKey).getRsaPublicKey(), content);
-    }
-
-    public String encode(RSAPublicKey key, String content) {
+    public String encode(String keyPath, RSA.Key keyType, String content) {
+        RsaKey rsaKey = RSA.getInstance().readKey(keyPath, keyType);
         try {
             Cipher rsa = Cipher.getInstance("RSA");
-            rsa.init(Cipher.ENCRYPT_MODE, key);
+            rsa.init(Cipher.ENCRYPT_MODE, keyType == Key.PublicKey ? rsaKey.getRsaPublicKey() : rsaKey.getRsaPrivateKey());
             byte[] bytes = rsa.doFinal(content.getBytes(StandardCharsets.UTF_8));
             return Base64.getEncoder().encodeToString(bytes);
         }catch (Exception e) {
@@ -74,21 +71,17 @@ public class RSA {
         }
     }
 
-    public String decode(String privateKeyPath, String content) {
-        return decode(RSA.getInstance().readKey(privateKeyPath, RSA.Key.PrivateKey).getRsaPrivateKey(), content);
-    }
-    public String decode(RSAPrivateKey key, String content) {
+    public String decode(String keyPath, RSA.Key keyType, String content) {
+        RsaKey rsaKey = RSA.getInstance().readKey(keyPath, keyType);
         try {
-
-            Cipher decryptCipher = Cipher.getInstance("RSA");
-            decryptCipher.init(Cipher.DECRYPT_MODE, key);
-            byte[] bytes = decryptCipher.doFinal(Base64.getDecoder().decode(content));
+            Cipher cipher = Cipher.getInstance("RSA");
+            cipher.init(Cipher.DECRYPT_MODE, keyType == Key.PublicKey ? rsaKey.getRsaPublicKey() : rsaKey.getRsaPrivateKey());
+            byte[] bytes = cipher.doFinal(Base64.getDecoder().decode(content));
             return new String(bytes, StandardCharsets.UTF_8);
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-
 
     public enum Key { PrivateKey, PublicKey }
 
