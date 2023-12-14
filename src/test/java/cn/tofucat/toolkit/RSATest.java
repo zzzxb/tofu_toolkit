@@ -1,8 +1,6 @@
 package cn.tofucat.toolkit;
 
 import cn.tofucat.toolkit.algorithm.RSA;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

@@ -44,11 +44,18 @@ public class RSA {
         FileUtils.write(Base64.getEncoder().encodeToString(priKey.getEncoded()).getBytes(StandardCharsets.UTF_8), outPath + File.separator + "pri.key");
     }
 
-    public RsaKey readKey(String filePath, Key key) {
+
+    public RsaKey readKey(File file, Key keyType) {
+        String keyBase64 = new String(FileUtils.read(file), StandardCharsets.UTF_8);
+        return readKey(keyBase64, keyType);
+    }
+
+
+    public RsaKey readKey(String key, Key keyType) {
+        byte[] bytes = Base64.getDecoder().decode(key);
         try {
-            byte[] bytes = Base64.getDecoder().decode(FileUtils.read(filePath));
             KeyFactory keyFactory = KeyFactory.getInstance(ALGORITHM);
-            if (key == Key.PrivateKey) {
+            if (keyType == Key.PrivateKey) {
                 PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(bytes);
                 return new RsaKey((RSAPrivateKey) keyFactory.generatePrivate(spec));
             }
@@ -59,10 +66,17 @@ public class RSA {
         }
     }
 
-    public String encode(String keyPath, RSA.Key keyType, String content) {
-        RsaKey rsaKey = RSA.getInstance().readKey(keyPath, keyType);
+    public String encode(File keyPath, RSA.Key keyType, String content) {
+        return encode(readKey(keyPath, keyType), keyType, content);
+    }
+
+    public String encode(String key, RSA.Key keyType, String content) {
+        return encode(readKey(key, keyType), keyType, content);
+    }
+
+    private String encode(RsaKey rsaKey, RSA.Key keyType, String content) {
         try {
-            Cipher rsa = Cipher.getInstance("RSA");
+            Cipher rsa = Cipher.getInstance(ALGORITHM);
             rsa.init(Cipher.ENCRYPT_MODE, keyType == Key.PublicKey ? rsaKey.getRsaPublicKey() : rsaKey.getRsaPrivateKey());
             byte[] bytes = rsa.doFinal(content.getBytes(StandardCharsets.UTF_8));
             return Base64.getEncoder().encodeToString(bytes);
@@ -71,10 +85,17 @@ public class RSA {
         }
     }
 
-    public String decode(String keyPath, RSA.Key keyType, String content) {
-        RsaKey rsaKey = RSA.getInstance().readKey(keyPath, keyType);
+    public String decode(File keyPath, RSA.Key keyType, String content) {
+        return decode(readKey(keyPath, keyType), keyType, content);
+    }
+
+    public String decode(String key, RSA.Key keyType, String content) {
+        return decode(readKey(key, keyType), keyType, content);
+    }
+
+    private String decode(RsaKey rsaKey, RSA.Key keyType, String content) {
         try {
-            Cipher cipher = Cipher.getInstance("RSA");
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
             cipher.init(Cipher.DECRYPT_MODE, keyType == Key.PublicKey ? rsaKey.getRsaPublicKey() : rsaKey.getRsaPrivateKey());
             byte[] bytes = cipher.doFinal(Base64.getDecoder().decode(content));
             return new String(bytes, StandardCharsets.UTF_8);

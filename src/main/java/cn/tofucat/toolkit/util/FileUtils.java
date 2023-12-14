@@ -36,8 +36,11 @@ public final class FileUtils {
     }
 
     public static byte[] read(String filePath) {
+        return read(new File(filePath));
+    }
+
+    public static byte[] read(File file) {
         try {
-            File file = new File(filePath);
             log.info("find file path: {}", file.getAbsolutePath());
             return Files.readAllBytes(file.toPath());
         } catch (IOException e) {
