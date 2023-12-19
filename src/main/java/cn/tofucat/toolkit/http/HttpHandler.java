@@ -29,6 +29,8 @@ public abstract class HttpHandler {
 
     private static OkHttpClient.Builder initBuild() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//        builder.sslSocketFactory(OkHttpUtil.getIgnoreInitedSslContext().getSocketFactory(), OkHttpUtil.IGNORE_SSL_TRUST_MANAGER_X509);
+//        builder.hostnameVerifier(OkHttpUtil.getIgnoreSslHostnameVerifier());
         builder.connectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS);
         builder.callTimeout(REQ_TIMEOUT, TimeUnit.SECONDS);
         builder.connectionPool(new ConnectionPool(MAX_TOTAL, IDE_TIMEOUT, TimeUnit.SECONDS));
