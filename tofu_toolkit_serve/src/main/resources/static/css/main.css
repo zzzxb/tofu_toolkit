@@ -1,0 +1,62 @@
+body {
+    background-color: whitesmoke;
+}
+
+.container {
+    background-color: white;
+    width: 80%;
+    margin: 5% auto;
+    padding: 1em 0;
+    box-shadow: black 2px 2px 15px 1px;
+}
+
+.bt {
+    outline: none;
+    background-color: white;
+    border: 1px solid black;
+    width: 30.6%;
+    height: 34px;
+    line-height: 30px;
+    font-size: medium;
+    margin: 3px auto;
+}
+
+.bt:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: black 0 0 5px 1px;
+    transition: background-color 0.5s ease;
+}
+
+.bt:active {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: black 0 0 1px 1px;
+    transition: background-color 0.5s ease;
+}
+
+.input_txt {
+    outline: none;
+    background-color: white;
+    border: 1px solid black;
+    width: 30%;
+    height: 30px;
+    line-height: 30px;
+    font-size: medium;
+    margin: 10px 0;
+}
+
+.input_txt:hover {
+    box-shadow: black 0 0 5px 1px;
+}
+
+.input_txt:focus {
+    box-shadow: black 0 0 1px 1px;
+}
+
+.mq_start_box {
+    text-align: center;
+}
+
+.mq_send_box {
+    text-align: center;
+    display: none;
+}
