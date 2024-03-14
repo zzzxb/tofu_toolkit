@@ -42,7 +42,7 @@ public class ConfigUtil {
         try {
             init();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
