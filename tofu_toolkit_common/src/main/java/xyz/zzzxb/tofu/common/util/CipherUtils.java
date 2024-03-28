@@ -3,6 +3,8 @@ package xyz.zzzxb.tofu.common.util;
 
 import xyz.zzzxb.tofu.common.algorithm.EncryptBase;
 
+import java.nio.charset.StandardCharsets;
+
 public final class CipherUtils {
     private final static EncryptBase encryptBase = new EncryptBase();
 
@@ -43,5 +45,13 @@ public final class CipherUtils {
     public static String sha1(byte[] bytes) {
         CheckParamUtils.isNull(bytes).throwMessage("bytes is null");
         return encryptBase.encrypt(bytes, EncryptBase.Encrypt.SHA1);
+    }
+
+    public static byte[] buildDigest(String content, EncryptBase.Encrypt encrypt) {
+        return encryptBase.buildDigest(content.getBytes(StandardCharsets.UTF_8), encrypt);
+    }
+
+    public static byte[] buildDigest(byte[] contentBytes, EncryptBase.Encrypt encrypt) {
+        return encryptBase.buildDigest(contentBytes, encrypt);
     }
 }

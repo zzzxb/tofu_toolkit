@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ProducerTests {
 
     @Test
-    public void testSend() throws MQClientException, InterruptedException {
+    public void testSend() throws Exception {
         SimpleProducer producer = new ProducerBootstrap("localhost:9876", "testInfo").start();
         producer.asyncSend("zzzxb", "*", "你好", new SendCallback() {
             @Override

@@ -60,3 +60,19 @@ body {
     text-align: center;
     display: none;
 }
+
+p {
+    color: dimgrey;
+    border: 1px solid dimgrey;
+    width: 50%;
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+    float: inherit;
+}
+
+p:hover {
+    color: black;
+    border: 1px solid black;
+    transition: border 1s ease;
+}

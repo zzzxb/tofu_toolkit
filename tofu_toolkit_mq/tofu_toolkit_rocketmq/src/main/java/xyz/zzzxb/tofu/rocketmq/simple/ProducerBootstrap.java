@@ -20,10 +20,9 @@ public class ProducerBootstrap {
         producer.setRetryTimesWhenSendAsyncFailed(0);
     }
 
-    public SimpleProducer start() throws MQClientException {
+    public SimpleProducer start() throws Exception {
         if (producer != null && !startState) {
             producer.start();
-            startState = true;
             return new SimpleProducer(producer);
         }
         throw new RuntimeException("service has already started");

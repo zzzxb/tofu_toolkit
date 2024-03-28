@@ -13,6 +13,7 @@
         <module>tofu_toolkit_common</module>
         <module>tofu_toolkit_mq</module>
         <module>tofu_toolkit_serve</module>
+        <module>tofu_toolkit_net</module>
     </modules>
 
     <properties>

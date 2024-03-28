@@ -20,11 +20,11 @@ public class EncryptBase {
         return encode(buildDigest(content, null, encrypt));
     }
 
-    private  byte[] buildDigest(byte[] contentBytes, Encrypt encrypt) {
+    public  byte[] buildDigest(byte[] contentBytes, Encrypt encrypt) {
         return buildDigest((byte)0, contentBytes, encrypt);
     }
 
-    private  byte[] buildDigest(byte contentByte, byte[] contentBytes, Encrypt encrypt) {
+    public  byte[] buildDigest(byte contentByte, byte[] contentBytes, Encrypt encrypt) {
         CheckParamUtils.isNull(encrypt).throwMessage("encrypt algorithm is null");
 
         MessageDigest instance;

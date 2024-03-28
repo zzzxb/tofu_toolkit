@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tofu toolkit</title>
+</head>
+<script src="../../static/js/jquery-3.7.1.min.js" th:src="@{/js/jquery-3.7.1.min.js}"></script>
+<script src="../../static/js/axios.min.js" th:src="@{/js/axios.min.js}"></script>
+<script src="../../static/js/main.js" th:src="@{/js/main.js}"></script>
+<link href="../../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
+
+<body>
+<div class="container">
+    <div class="mq_start_box">
+        <div>
+            <input id="addr" type="text" class="input_txt" placeholder="localhost:9876">
+            <input id="group" type="text" class="input_txt" placeholder="group">
+        </div>
+        <div>
+            <button class="bt" type="button" onclick="startup()">startup</button>
+        </div>
+    </div>
+
+    <div class="mq_send_box">
+        <div >
+            <input id="topic" type="text" class="input_txt" placeholder="topic">
+            <input id="tags" type="text" class="input_txt" placeholder="tags">
+            <input id="message" type="text" class="input_txt" placeholder="message">
+        </div>
+        <div>
+            <button class="bt" type="button" onclick="shutdown()">shutdown</button>
+            <button class="bt" type="button" onclick="send()">send</button>
+        </div>
+    </div>
+
+    <div class='console' style="width: 80%; margin: 1em auto;">
+    </div>
+</div>
+
+</body>
+</html>

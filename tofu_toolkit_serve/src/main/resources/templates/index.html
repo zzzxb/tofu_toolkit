@@ -10,32 +10,8 @@
 <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
 
 <body>
-<div class="container">
-    <div class="mq_start_box">
-        <div>
-            <input id="addr" type="text" class="input_txt" placeholder="localhost:9876">
-            <input id="group" type="text" class="input_txt" placeholder="group">
-        </div>
-        <div>
-            <button class="bt" type="button" onclick="startup()">startup</button>
-        </div>
-    </div>
-
-    <div class="mq_send_box">
-        <div >
-            <input id="topic" type="text" class="input_txt" placeholder="topic">
-            <input id="tags" type="text" class="input_txt" placeholder="tags">
-            <input id="message" type="text" class="input_txt" placeholder="message">
-        </div>
-        <div>
-            <button class="bt" type="button" onclick="shutdown()">shutdown</button>
-            <button class="bt" type="button" onclick="send()">send</button>
-        </div>
-    </div>
-
-    <div class='console' style="width: 80%; margin: 1em auto;">
-    </div>
+<div class="container" style="overflow: hidden;">
+    <p onclick="window.location.href='/jump/mq'">RocketMQ Producer</p>
 </div>
-
 </body>
 </html>

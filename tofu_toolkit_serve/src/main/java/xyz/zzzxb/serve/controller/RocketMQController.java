@@ -35,7 +35,7 @@ public class RocketMQController {
             try {
                 SimpleProducer producer = new ProducerBootstrap(info.getAddr(), info.getGroup()).start();
                 producerMap.put(info.getUuid(), producer);
-            } catch (MQClientException e) {
+            } catch (Exception e) {
                 log.error("rocketmq 启动失败", e);
                 return new RespMsg<Boolean>().fail(400, "rocketmq 启动失败 - " + e.getMessage());
             }
